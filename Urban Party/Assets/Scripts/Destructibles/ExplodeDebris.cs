@@ -20,6 +20,7 @@ public class ExplodeDebris : MonoBehaviour
         }
         foreach (var particulate in debris)
         {
+            particulate.transform.parent = null;
             float x = particulate.position.x - transform.position.x;
             float y = particulate.position.y - transform.position.y;
 
@@ -28,5 +29,6 @@ public class ExplodeDebris : MonoBehaviour
             particulate.AddForce((explosionPosition * force) + (Vector2.up * upForce), ForceMode2D.Force);
             particulate.AddTorque(Random.Range(rotForceMin, rotForceMax) * explosionPosition.normalized.x, ForceMode2D.Force);
         }
+        Destroy(gameObject);
     }
 }
