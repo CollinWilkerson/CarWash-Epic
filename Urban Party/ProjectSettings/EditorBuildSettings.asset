@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 2159a304c00ff7842a0b3121fceded76
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: a010ae9abd3c248459cc332ae91a277c
+  - enabled: 1
+    path: Assets/Scenes/Thanksgiving.unity
+    guid: a0a1e2fd875334643a9cd6399a88c169
+  - enabled: 1
+    path: Assets/Scenes/Battle.unity
+    guid: 3f1ce90f92b03094ca9de9fc8e5ab476
+  m_configObjects: {}
