@@ -11,10 +11,20 @@ public class Destructible : MonoBehaviour
     [Header("Prefabs")]
     public GameObject fallingDebrisPrefab;
     public GameObject shatterPrefab;
-
+    [Header("Internal State")]
     public bool inProgress;
     public bool isDestroyed;
 
+    private static ChaosHud hud;
+    private void Start()
+    {
+        if (hud == null)
+        {
+            hud = FindAnyObjectByType<ChaosHud>();
+        }
+        if(hud != null) { hud.destructibles.Add(this); }
+        else { Debug.LogError("No Chaos Hud Detected!"); }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (inProgress)
@@ -44,6 +54,11 @@ public class Destructible : MonoBehaviour
     {
         isDestroyed = true;
         // Implement
+        if (hud != null)
+        {
+            hud.destructibles.Remove(this);
+            hud.UpdateHud();
+        }
         return;
     }
 }
