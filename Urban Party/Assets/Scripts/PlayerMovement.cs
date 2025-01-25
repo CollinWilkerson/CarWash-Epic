@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private float groundGravity;
     [SerializeField]
     private Transform playerSprite;
+    [SerializeField] 
+    private float sprintMultiplier;
 
     [SerializeField]
     private Transform GroundCheckPos;
@@ -53,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
         bool notFalling = rb.velocity.y < 0;
 
         if (notFalling && CurrentlyGrounded())
@@ -66,6 +67,35 @@ public class PlayerMovement : MonoBehaviour
         {
             isFalling = (rb.velocity.y >= 0) ? false : true;
             isGrounded = (CurrentlyGrounded()) ? true : false;
+        }
+
+        if(Input.GetKeyDown(KeyCode.LeftShift)) 
+        {
+            maxSpeed *= sprintMultiplier;
+            Debug.Log(maxSpeed);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        { 
+            maxSpeed /= sprintMultiplier;
+            Debug.Log(maxSpeed);
+        }
+
+        if(Input.GetMouseButtonDown(0)) 
+        {
+            Debug.Log("Attack!");
+            this.transform.GetChild(3).GetComponent<SpriteRenderer>().enabled = true;
+            this.transform.GetChild(3).GetComponent<BoxCollider2D>().enabled = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        { 
+            this.transform.GetChild(3).GetComponent<SpriteRenderer>().enabled = false;
+            this.transform.GetChild(3).GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+        if (Input.anyKeyDown)
+        {
+            Debug.Log("Meow");
+            //Add meow sound effect here
         }
 
         atMaxSpeed = (Mathf.Abs(rb.velocity.x) > maxSpeed) ? true : false;
@@ -82,6 +112,9 @@ public class PlayerMovement : MonoBehaviour
             if (movingRight)
                 if (direction == Direction.right)
                 {
+                    //maxSpeed *= 2;
+                    Debug.Log("Gotta go right!");
+                    
                     rb.AddForce(sidewaysForce * Vector2.right, 0);
                 }
             if (movingLeft)
@@ -149,5 +182,16 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
         isFalling = false;
         isGrounded = false;
+    }
+
+    public void Stun()
+    {
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
+    }
+
+    public void Release()
+    {
+        rb.isKinematic = false;
     }
 }
