@@ -150,4 +150,15 @@ public class PlayerMovement : MonoBehaviour
         isFalling = false;
         isGrounded = false;
     }
+
+    public void Stun()
+    {
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
+    }
+
+    public void Release()
+    {
+        rb.isKinematic = false;
+    }
 }
