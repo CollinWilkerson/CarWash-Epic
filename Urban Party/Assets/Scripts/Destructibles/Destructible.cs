@@ -40,6 +40,7 @@ public class Destructible : MonoBehaviour
         triggerObject.SetActive(false);
         visual.SetActive(false);
         GameObject debrisObject = Instantiate(fallingDebrisPrefab, transform.position, transform.rotation);
+        debrisObject.transform.localScale = transform.localScale;
         FallingDebris debris = debrisObject.GetComponent<FallingDebris>();
         debris.parent = this;
         debris.shatterPrefab = shatterPrefab;
