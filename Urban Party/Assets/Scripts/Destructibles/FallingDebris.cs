@@ -35,6 +35,7 @@ public class FallingDebris : MonoBehaviour
         //audio
         audioSource.PlayOneShot(breakNoise);
         GameObject shatterObject = Instantiate(shatterPrefab, transform.position, transform.rotation);
+        shatterObject.transform.localScale = transform.localScale;
         ExplodeDebris shatterScript = shatterObject.GetComponent<ExplodeDebris>();
         if(parent != null)
         {
