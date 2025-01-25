@@ -10643,6 +10643,18 @@ PrefabInstance:
       value: Breakable_Vase (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8533688681594732967, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3884131
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533688681594732967, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3884131
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533688681594732967, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3884131
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533688681594732967, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
       propertyPath: m_LocalPosition.x
       value: -181.48863
       objectReference: {fileID: 0}
@@ -11891,6 +11903,10 @@ PrefabInstance:
     - target: {fileID: 2581602039238983509, guid: 70365843e44ee0540befa8cba9ce1d6e, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 2926818544757609454, guid: 70365843e44ee0540befa8cba9ce1d6e, type: 3}
+      propertyPath: sprintMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3290809327609674013, guid: 70365843e44ee0540befa8cba9ce1d6e, type: 3}
       propertyPath: confettiText
