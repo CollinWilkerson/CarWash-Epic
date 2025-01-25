@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3661388495779753787}
   - component: {fileID: 2604144072115479397}
   - component: {fileID: 4689419149513840595}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 887
   m_ForceReceiveLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 2926818544757609454}
   - component: {fileID: 2581602039238983509}
   - component: {fileID: 3290809327609674013}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3682665318825840342}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 7816688144501987810}
   - component: {fileID: 579150545270414757}
   - component: {fileID: 8764317243964487389}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 4987257209320745512}
   - component: {fileID: 5545269714041858585}
   - component: {fileID: 3932619260421198961}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
