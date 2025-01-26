@@ -334,10 +334,15 @@ public class PlayerMovement : MonoBehaviour
 
     void CapSpeed()
     {
-        float curSpeed = Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y);
+        float curSpeed = Mathf.Abs(rb.velocity.x);
         if(curSpeed > sprintHardCap)
         {
-            rb.velocity = new Vector2(rb.velocity.normalized.x * sprintHardCap, rb.velocity.normalized.y * sprintHardCap);
+            rb.velocity = new Vector2(rb.velocity.normalized.x * sprintHardCap, rb.velocity.y);
+        }
+        float curSpeedY = rb.velocity.y;
+        if (curSpeedY > sprintHardCap)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.normalized.y * sprintHardCap);
         }
     }
 }
