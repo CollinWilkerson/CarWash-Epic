@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     //private float yVelocity;
     private Animator anim;
     public bool isInput;
+    private bool wallJumped;
 
     public Rigidbody2D rb;
 
@@ -200,7 +201,7 @@ public class PlayerMovement : MonoBehaviour
         {
             DoJump();
         }
-        else if (CanClimb(GetMovementDirection()))
+        else if (CanClimb(GetMovementDirection()) && !wallJumped)
         {
             DoJump();
 
@@ -212,6 +213,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddForce(sidewaysForce * Vector2.right, 0);
             }
+
+            wallJumped = true;
         }
         else
         {
@@ -231,6 +234,7 @@ public class PlayerMovement : MonoBehaviour
         {
                 bool onPlayer = hit.transform.gameObject.CompareTag("Player");
                 sr.sprite = run;
+                wallJumped = false;
 
                 return true;
         }
@@ -329,10 +333,10 @@ public class PlayerMovement : MonoBehaviour
 
     void CapSpeed()
     {
-        float curSpeed = Mathf.Abs(rb.velocity.x);
+        float curSpeed = Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y);
         if(curSpeed > sprintHardCap)
         {
-            rb.velocity = new Vector2(rb.velocity.normalized.x * sprintHardCap, rb.velocity.y);
+            rb.velocity = new Vector2(rb.velocity.normalized.x * sprintHardCap, rb.velocity.normalized.y * sprintHardCap);
         }
     }
 }
