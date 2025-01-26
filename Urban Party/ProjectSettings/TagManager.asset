@@ -8,6 +8,7 @@ TagManager:
   - Destructible
   - Semisolid
   - Attack
+  - Climbable
   layers:
   - Default
   - TransparentFX

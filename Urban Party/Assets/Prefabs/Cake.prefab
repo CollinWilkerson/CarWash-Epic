@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5510558154706981495}
   m_Layer: 0
   m_Name: Cake
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

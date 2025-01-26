@@ -1,5 +1,7 @@
 using System.Collections;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private Transform GroundCheckPos;
+    [SerializeField]
+    private Transform ClimbCheckPos;
 
     private SpriteRenderer sr;
     [SerializeField]
@@ -81,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
             isFalling = (rb.velocity.y >= 0) ? false : true;
             isGrounded = (CurrentlyGrounded()) ? true : false;
         }
-
+        
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             maxSpeed *= sprintMultiplier;
@@ -104,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
             this.transform.GetChild(3).GetComponent<SpriteRenderer>().enabled = false;
             this.transform.GetChild(3).GetComponent<BoxCollider2D>().enabled = false;
         }
-
+        
         if (Input.anyKeyDown)
         {
             Debug.Log("Meow");
@@ -143,14 +147,12 @@ public class PlayerMovement : MonoBehaviour
                 {
                     //maxSpeed *= 2;
                     Debug.Log("Gotta go right!");
-
                     rb.AddForce(sidewaysForce * Vector2.right, 0);
                 }
             if (movingLeft)
                 if (direction == Direction.left)
                 {
                     rb.AddForce(sidewaysForce * Vector2.left, 0);
-
                 }
             return;
         }
@@ -161,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
 
             transform.localScale = new Vector3(-0.16f, 0.16f, 0.16f);
             //playerSprite.localScale = new Vector3(-1, 1, 1);
+            SetMovementDirection(-1f);
         }
         else if (direction == Direction.right)
         {
@@ -168,6 +171,12 @@ public class PlayerMovement : MonoBehaviour
 
             transform.localScale = new Vector3(0.16f, 0.16f, 0.16f);
             //playerSprite.localScale = new Vector3(1, 1, 1);
+            SetMovementDirection(1f);
+        }
+
+        if (CanClimb(GetMovementDirection()))
+        {
+            rb.AddForce(sidewaysForce * Vector2.up, 0);
         }
     }
 
@@ -178,6 +187,19 @@ public class PlayerMovement : MonoBehaviour
         if (CurrentlyGrounded())
         {
             DoJump();
+        }
+        else if (CanClimb(GetMovementDirection()))
+        {
+            DoJump();
+
+            if (GetMovementDirection() == 1f)
+            {
+                rb.AddForce(sidewaysForce * Vector2.left, 0);
+            }
+            else if (GetMovementDirection() == -1f)
+            {
+                rb.AddForce(sidewaysForce * Vector2.right, 0);
+            }
         }
         else
         {
@@ -195,14 +217,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (hit)
         {
-            bool onPlayer = hit.transform.gameObject.CompareTag("Player");
-            sr.sprite = run;
+                bool onPlayer = hit.transform.gameObject.CompareTag("Player");
+                sr.sprite = run;
 
-            return true;
+                return true;
         }
         else
         {
             sr.sprite = jump;
+        
             return false;
         }
     }
@@ -259,5 +282,36 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale.y,
             transform.localScale.z
         );
+    }
+
+    bool CanClimb(float direction)
+    {
+        if(isFrozen || isAffectedByVacuum)
+        {
+            return false;
+        }
+        
+        RaycastHit2D hit;
+
+        if (direction == -1f)
+        {
+            hit = Physics2D.Raycast(new Vector2(ClimbCheckPos.position.x, ClimbCheckPos.position.y), Vector2.left, 0.2f);
+        }
+        else
+        {
+            hit = Physics2D.Raycast(new Vector2(ClimbCheckPos.position.x, ClimbCheckPos.position.y), Vector2.right, 0.2f);
+        }
+
+        if (!hit) { return false; }
+
+        if (hit.transform.gameObject.CompareTag("Climbable"))
+        {
+            Debug.Log("climb this");
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
