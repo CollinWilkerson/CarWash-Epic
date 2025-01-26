@@ -252,6 +252,7 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
         isFalling = false;
         isGrounded = false;
+        anim.Play("GooberJump", 0);
     }
 
     public void Stun()
