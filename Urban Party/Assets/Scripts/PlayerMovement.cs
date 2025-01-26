@@ -75,8 +75,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (isFrozen) return; // Skip if frozen - NEW
-        anim.SetBool("IsInput", isInput);
-        anim.SetFloat("CurSpeed", Mathf.Abs(rb.velocity.x));
+        UpdateAnim();
         bool notFalling = rb.velocity.y < 0;
 
         if (notFalling && CurrentlyGrounded())
@@ -90,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
             isFalling = (rb.velocity.y >= 0) ? false : true;
             isGrounded = (CurrentlyGrounded()) ? true : false;
         }
-        
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             maxSpeed *= sprintMultiplier;
@@ -113,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
             this.transform.GetChild(3).GetComponent<SpriteRenderer>().enabled = false;
             this.transform.GetChild(3).GetComponent<BoxCollider2D>().enabled = false;
         }
-        
+
         if (Input.anyKeyDown)
         {
             Debug.Log("Meow");
@@ -121,6 +120,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         atMaxSpeed = (Mathf.Abs(rb.velocity.x) > maxSpeed) ? true : false;
+    }
+
+    public void UpdateAnim()
+    {
+        anim.SetBool("IsInput", isInput);
+        anim.SetFloat("CurSpeed", Mathf.Abs(rb.velocity.x));
+        anim.SetBool("IsGrounded", isGrounded);
     }
 
     public void SetVacuumEffect(bool state) // NEW
