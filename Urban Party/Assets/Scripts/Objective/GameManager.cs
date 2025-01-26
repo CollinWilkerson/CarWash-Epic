@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,19 @@ public class GameManager : MonoBehaviour
 
     public void DoWin()
     {
+        LevelController.level++; 
+        if (LevelController.level == 1)
+        {
+            SceneManager.LoadScene("LivingRoom");
+        }
+        else if (LevelController.level == 2)
+        {
+            SceneManager.LoadScene("WashRoom");
+        }
+        else if(LevelController.level == 3)
+        {
+            SceneManager.LoadScene("WinScreen");
+        }
         Debug.Log("We Won!");
         won = true;
         //implement this
@@ -42,6 +56,7 @@ public class GameManager : MonoBehaviour
         if (!won)
         {
             Debug.Log("I will never forgive you, player");
+            SceneManager.LoadScene("LoseScreen");
         }
     }
 

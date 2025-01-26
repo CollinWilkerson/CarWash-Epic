@@ -41,6 +41,10 @@ public class LevelTimer : MonoBehaviour
             int minutes = Mathf.FloorToInt(time / 60);
             int seconds = Mathf.FloorToInt(time % 60);
             int milliseconds = Mathf.FloorToInt((time * 100) % 100);
+            if(minutes == 2)
+            {
+                GameManager.instance.DoLose();
+            }
 
             timerText.text = $"{minutes:0}:{seconds:00}.{milliseconds:00}";
         }
