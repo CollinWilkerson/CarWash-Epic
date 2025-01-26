@@ -2422,6 +2422,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4215750577804803206, guid: d79253791265baa4db39f8305c7b2857, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4243691571791223248, guid: d79253791265baa4db39f8305c7b2857, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2820,6 +2824,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5767147664491695312, guid: d79253791265baa4db39f8305c7b2857, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777754235025882517, guid: d79253791265baa4db39f8305c7b2857, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5848974954066189103, guid: d79253791265baa4db39f8305c7b2857, type: 3}
@@ -10914,6 +10922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb8284ad036390d4595dcef8abe7365e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  won: 0
   gameName: Weeeee
   destructiblesToWin: 0
   destructibles: []
@@ -12077,10 +12086,6 @@ PrefabInstance:
     - target: {fileID: 6890565228932308307, guid: 70365843e44ee0540befa8cba9ce1d6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8379883045919839271, guid: 70365843e44ee0540befa8cba9ce1d6e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

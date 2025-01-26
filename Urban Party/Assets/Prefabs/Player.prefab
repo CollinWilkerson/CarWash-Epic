@@ -155,7 +155,7 @@ Transform:
   m_GameObject: {fileID: 3356349067604413376}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -325,6 +325,7 @@ MonoBehaviour:
   ClimbCheckPos: {fileID: 8379883045919839271}
   run: {fileID: 21300000, guid: 32c8c7bed42ce984c9adf53b00ae267b, type: 3}
   jump: {fileID: 21300000, guid: 52fe624fe29af4c428a7eb9b9389831e, type: 3}
+  isInput: 0
   rb: {fileID: 0}
 --- !u!50 &2581602039238983509
 Rigidbody2D:
