@@ -8,6 +8,9 @@ public class HumanController : MonoBehaviour
     [Header("Stats")]
     [SerializeField] float maxspeed = 10;
     [SerializeField] float acceleration = 1;
+    [SerializeField] int maxMash = 10;
+    [SerializeField] Transform handLoc;
+    [SerializeField] float grabSpeed;
 
     private PlayerMovement player;
     private Rigidbody2D rb;
@@ -27,11 +30,13 @@ public class HumanController : MonoBehaviour
         ChasePlayer();
         if(grabbed)
         {
+            player.gameObject.transform.position = V3Lerp(handLoc.position, player.gameObject.transform.position, grabSpeed);
+
             if(Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
             {
                 mash++;
             }
-            if(mash > 10)
+            if(mash > maxMash)
             {
                 Release();
             }
@@ -44,10 +49,15 @@ public class HumanController : MonoBehaviour
         if(player.transform.position.x > transform.position.x && rb.velocity.x < maxspeed)
         {
             rb.AddForce(new Vector2(acceleration, 0));
+            transform.localScale = new Vector2(-1, 1);
         }
         else if(rb.velocity.x > -maxspeed)
         {
             rb.AddForce(new Vector2(-acceleration, 0));
+        }
+        if(player.transform.position.x < transform.position.x)
+        {
+            transform.localScale = new Vector2(1, 1);
         }
     }
 
@@ -96,5 +106,12 @@ public class HumanController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         grabbed = false;
         preRelease = false;
+    }
+
+    private Vector3 V3Lerp(Vector3 currentPos, Vector3 targetPos, float t)
+    {
+        return new Vector3(Mathf.Lerp(currentPos.x, targetPos.x, t),
+                    Mathf.Lerp(currentPos.y, targetPos.y, t),
+                    Mathf.Lerp(currentPos.z, targetPos.z, t));
     }
 }
