@@ -8,9 +8,17 @@ public class InputHandler : MonoBehaviour
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.A))
+        {
             player.Move(Direction.left);
+            player.isInput = true;
+        }
         else if (Input.GetKey(KeyCode.D))
+        {
             player.Move(Direction.right);
+            player.isInput = true;
+        }
+        else
+            player.isInput = false;
     }
 
 
