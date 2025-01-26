@@ -5,6 +5,7 @@ using UnityEngine;
 public class SkedaddleNoise : MonoBehaviour
 {
     public AudioSource skedadle;
+    public AudioSource slide;
     private PlayerMovement player;
     private Animator animator;
     private float curSpeed;
@@ -34,6 +35,15 @@ public class SkedaddleNoise : MonoBehaviour
         {
             skedadle.Stop();
         }
-        
+        if (isGrounded && !isRunning && curSpeed > 0)
+        {
+            if(!slide.isPlaying)
+            slide.Play();
+            slide.pitch = Mathf.Clamp(curSpeed / 9.4f, 0, 1);
+        }
+        else
+        {
+            slide.Stop();
+        }
     }
 }
