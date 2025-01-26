@@ -17,12 +17,12 @@ public class PlayerMovement : MonoBehaviour
     private float groundGravity;
     [SerializeField]
     private Transform playerSprite;
-    [SerializeField] 
+    [SerializeField]
     private float sprintMultiplier;
 
     [SerializeField]
     private Transform GroundCheckPos;
-    
+
     private SpriteRenderer sr;
     [SerializeField]
     private Sprite run;
@@ -32,6 +32,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isFalling;
     private bool atMaxSpeed;
     private bool isGrounded;
+    private bool isFrozen; // NEW
+    private bool isAffectedByVacuum; // NEW
+    private float currentDirection = 1f; // NEW
     //private float yVelocity;
 
     public Rigidbody2D rb;
@@ -45,16 +48,26 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isFrozen) return; // Skip if frozen - NEW
+
         if (isGrounded)
             rb.AddForce(Vector3.down * groundGravity);
         else if (isFalling)
             rb.AddForce(Vector3.down * fallGravity);
         else
             rb.AddForce(Vector3.down * airGravity);
-    }
 
+        // Apply horizontal force when affected by the vacuum
+        if (isAffectedByVacuum)
+        {
+            float horizontalInput = Input.GetAxis("Horizontal");
+            rb.AddForce(Vector2.right * currentDirection * sidewaysForce);
+        }
+    }
     void Update()
     {
+        if (isFrozen) return; // Skip if frozen - NEW
+
         bool notFalling = rb.velocity.y < 0;
 
         if (notFalling && CurrentlyGrounded())
@@ -69,25 +82,25 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = (CurrentlyGrounded()) ? true : false;
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftShift)) 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             maxSpeed *= sprintMultiplier;
             Debug.Log(maxSpeed);
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
-        { 
+        {
             maxSpeed /= sprintMultiplier;
             Debug.Log(maxSpeed);
         }
 
-        if(Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Attack!");
             this.transform.GetChild(3).GetComponent<SpriteRenderer>().enabled = true;
             this.transform.GetChild(3).GetComponent<BoxCollider2D>().enabled = true;
         }
         if (Input.GetMouseButtonUp(0))
-        { 
+        {
             this.transform.GetChild(3).GetComponent<SpriteRenderer>().enabled = false;
             this.transform.GetChild(3).GetComponent<BoxCollider2D>().enabled = false;
         }
@@ -101,8 +114,24 @@ public class PlayerMovement : MonoBehaviour
         atMaxSpeed = (Mathf.Abs(rb.velocity.x) > maxSpeed) ? true : false;
     }
 
+    public void SetVacuumEffect(bool state) // NEW
+    {
+        isAffectedByVacuum = state;
+    }
+
+    public float GetMovementDirection() //NEW
+    {
+        return currentDirection;
+    }
+
+    public void SetMovementDirection(float direction) //NEW
+    {
+        currentDirection = direction;
+    }
+
     public void Move(Direction direction)
     {
+        if (isFrozen) return; // Skip if frozen - NEW
 
         bool movingRight = rb.velocity.x < 0;
         bool movingLeft = rb.velocity.x > 0;
@@ -114,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     //maxSpeed *= 2;
                     Debug.Log("Gotta go right!");
-                    
+
                     rb.AddForce(sidewaysForce * Vector2.right, 0);
                 }
             if (movingLeft)
@@ -144,6 +173,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void TryJump()
     {
+        if (isFrozen) return; // Skip if frozen - NEW
+
         if (CurrentlyGrounded())
         {
             DoJump();
@@ -193,5 +224,40 @@ public class PlayerMovement : MonoBehaviour
     public void Release()
     {
         rb.isKinematic = false;
+    }
+
+    public void FreezePlayer(float freezeDuration) //NEW
+    {
+        if (!isFrozen)
+        {
+            StartCoroutine(FreezeCoroutine(freezeDuration));
+        }
+    }
+
+    private IEnumerator FreezeCoroutine(float freezeDuration) //NEW
+    {
+        isFrozen = true;
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
+
+        yield return new WaitForSeconds(freezeDuration);
+
+        rb.isKinematic = false;
+        isFrozen = false;
+    }
+
+    public void PushBack(Vector2 direction, float force) //NEW
+    {
+        rb.velocity = Vector2.zero;
+        rb.AddForce(direction * force, ForceMode2D.Impulse);
+    }
+
+    public void FlipSprite() //NEW
+    {
+        transform.localScale = new Vector3(
+            Mathf.Abs(transform.localScale.x) * currentDirection,
+            transform.localScale.y,
+            transform.localScale.z
+        );
     }
 }
