@@ -105,13 +105,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Attack!");
-            this.transform.GetChild(4).GetComponent<SpriteRenderer>().enabled = true;
+            anim.SetBool("IsAttack", true);
             this.transform.GetChild(4).GetComponent<BoxCollider2D>().enabled = true;
         }
         if (Input.GetMouseButtonUp(0))
         {
-            this.transform.GetChild(4).GetComponent<SpriteRenderer>().enabled = false;
             this.transform.GetChild(4).GetComponent<BoxCollider2D>().enabled = false;
+            anim.SetBool("IsAttack", false);
         }
 
         if (Input.anyKeyDown)
