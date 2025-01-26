@@ -19,7 +19,10 @@ public class GameManager : MonoBehaviour
     }
 
     public List<Destructible> destructibles;
-    //List<Objectives> objectives;
+    public List<AttackBreak> objectives;
+
+    private void Start()
+    { }
 
     public void SetTotalDestructibleAmount(int amount)
     {
@@ -46,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         //Temp
         if (!won) { 
-            if(destructibles.Count == 0 || (destructibleAmount - destructibles.Count < destructiblesToWin && destructiblesToWin > 0))
+            if((destructibles.Count == 0 && objectives.Count == 0)|| (destructibleAmount - destructibles.Count < destructiblesToWin && destructiblesToWin > 0))
             {
                 DoWin();
             }

@@ -9,6 +9,12 @@ public class AttackBreak : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] bool required;
 
+
+    private void Start()
+    {
+        if (GameManager.instance != null) { GameManager.instance.objectives.Add(this); }
+        else { Debug.LogError("No GameManager!"); }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Attack"))
@@ -17,10 +23,11 @@ public class AttackBreak : MonoBehaviour
             if (health < 1)
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = damagedSprite;
-                if (required)
+                GameManager.instance.objectives.Remove(this);
+                /*if (required)
                 {
                     LevelController.CompleteReq();
-                }
+                }*/
             }
         }
     }
