@@ -772,7 +772,7 @@ MonoBehaviour:
   - {fileID: 3321007951113357089}
   audioSource: {fileID: 0}
   force: 500
-  rotForceMax: 500
+  rotForceMax: 100
   rotForceMin: 0
   upForce: 100
   parent: {fileID: 0}
