@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 2926818544757609454}
   - component: {fileID: 2581602039238983509}
   - component: {fileID: 3290809327609674013}
+  - component: {fileID: 313223816967773993}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -370,6 +371,27 @@ MonoBehaviour:
   backToPosition: 0
   playerInventory: {fileID: 0}
   confettiText: {fileID: 0}
+--- !u!95 &313223816967773993
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3847936968281624885}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 371c5fdd4bc543349ba7c72121acc42c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5536787015617890133
 GameObject:
   m_ObjectHideFlags: 0

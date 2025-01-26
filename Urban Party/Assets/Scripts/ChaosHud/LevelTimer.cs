@@ -31,12 +31,20 @@ public class LevelTimer : MonoBehaviour
 
     private void UpdateTimerUI(float time)
     {
-        // Format time as minutes:seconds.milliseconds (e.g., "1:23.45")
-        int minutes = Mathf.FloorToInt(time / 60);
-        int seconds = Mathf.FloorToInt(time % 60);
-        int milliseconds = Mathf.FloorToInt((time * 100) % 100);
+        if (GameManager.instance.won)
+        {
+            timerText.text = "YOU WON!";
+        }
+        else
+        {
+            // Format time as minutes:seconds.milliseconds (e.g., "1:23.45")
+            int minutes = Mathf.FloorToInt(time / 60);
+            int seconds = Mathf.FloorToInt(time % 60);
+            int milliseconds = Mathf.FloorToInt((time * 100) % 100);
 
-        timerText.text = $"{minutes:0}:{seconds:00}.{milliseconds:00}";
+            timerText.text = $"{minutes:0}:{seconds:00}.{milliseconds:00}";
+        }
+        // Format time as minutes:seconds.milliseconds (e.g., "1:23.45")
     }
     public void ResetTimer()
     {

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     // Go!
     public static GameManager instance;
-    private bool won;
+    public bool won;
     public string gameName;
     private int destructibleAmount;
     public int destructiblesToWin;
@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public void DoWin()
     {
         Debug.Log("We Won!");
+        won = true;
         //implement this
         return;
     }

@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform playerSprite;
     [SerializeField]
     private float sprintMultiplier;
+    private float sprintHardCap = 18;
 
     [SerializeField]
     private Transform GroundCheckPos;
@@ -40,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isAffectedByVacuum; // NEW
     private float currentDirection = 1f; // NEW
     //private float yVelocity;
+    private Animator anim;
+    public bool isInput;
 
     public Rigidbody2D rb;
 
@@ -48,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("FindRigidBody");
         rb = gameObject.GetComponent<Rigidbody2D>();
         sr = gameObject.GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -71,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (isFrozen) return; // Skip if frozen - NEW
-
+        UpdateAnim();
         bool notFalling = rb.velocity.y < 0;
 
         if (notFalling && CurrentlyGrounded())
@@ -85,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
             isFalling = (rb.velocity.y >= 0) ? false : true;
             isGrounded = (CurrentlyGrounded()) ? true : false;
         }
-        
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             maxSpeed *= sprintMultiplier;
@@ -108,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
             this.transform.GetChild(3).GetComponent<SpriteRenderer>().enabled = false;
             this.transform.GetChild(3).GetComponent<BoxCollider2D>().enabled = false;
         }
-        
+
         if (Input.anyKeyDown)
         {
             Debug.Log("Meow");
@@ -116,6 +120,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         atMaxSpeed = (Mathf.Abs(rb.velocity.x) > maxSpeed) ? true : false;
+    }
+
+    public void UpdateAnim()
+    {
+        anim.SetBool("IsInput", isInput);
+        anim.SetFloat("CurSpeed", Mathf.Abs(rb.velocity.x));
+        anim.SetBool("IsGrounded", isGrounded);
     }
 
     public void SetVacuumEffect(bool state) // NEW
@@ -178,6 +189,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(sidewaysForce * Vector2.up, 0);
         }
+        CapSpeed();
     }
 
     public void TryJump()
@@ -312,6 +324,15 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+    void CapSpeed()
+    {
+        float curSpeed = Mathf.Abs(rb.velocity.x);
+        if(curSpeed > sprintHardCap)
+        {
+            rb.velocity = new Vector2(rb.velocity.normalized.x * sprintHardCap, rb.velocity.y);
         }
     }
 }
