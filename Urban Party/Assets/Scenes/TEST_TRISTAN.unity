@@ -3426,28 +3426,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d79253791265baa4db39f8305c7b2857, type: 3}
---- !u!114 &312202094 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6305977831846207918, guid: d79253791265baa4db39f8305c7b2857, type: 3}
-  m_PrefabInstance: {fileID: 312202093}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8e2713f0df2f544b8542847103b0150, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &312202095 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3718531785625661546, guid: d79253791265baa4db39f8305c7b2857, type: 3}
-  m_PrefabInstance: {fileID: 312202093}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &321213439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11858,16 +11836,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2926818544757609454, guid: 70365843e44ee0540befa8cba9ce1d6e, type: 3}
       propertyPath: sprintMultiplier
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3290809327609674013, guid: 70365843e44ee0540befa8cba9ce1d6e, type: 3}
       propertyPath: confettiText
       value: 
-      objectReference: {fileID: 312202095}
+      objectReference: {fileID: 0}
     - target: {fileID: 3290809327609674013, guid: 70365843e44ee0540befa8cba9ce1d6e, type: 3}
       propertyPath: playerInventory
       value: 
-      objectReference: {fileID: 312202094}
+      objectReference: {fileID: 0}
     - target: {fileID: 3847936968281624885, guid: 70365843e44ee0540befa8cba9ce1d6e, type: 3}
       propertyPath: m_Name
       value: Player
