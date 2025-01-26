@@ -12,7 +12,7 @@ public class ChaosHud : MonoBehaviour
     private LevelTimer timer;
     void StartHud()
     {
-        chaosSlider.maxValue = destructibles.Count;
+        chaosSlider.maxValue = destructibles.Count + GameManager.instance.objectives.Count;
         chaosSlider.value = 0;
         timer = GetComponent<LevelTimer>();
         timer.StartTimer();
@@ -26,10 +26,14 @@ public class ChaosHud : MonoBehaviour
         {
             StartHud();
         }
+        else
+        {
+            UpdateHud();
+        }
     }
     public void UpdateHud()
     {
-        chaosSlider.value = chaosSlider.maxValue - destructibles.Count;
+        chaosSlider.value = chaosSlider.maxValue - destructibles.Count - GameManager.instance.objectives.Count;
         InformGameManager();
     }
     public void InformGameManager()
