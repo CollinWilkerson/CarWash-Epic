@@ -12,6 +12,8 @@ public class Destructible : MonoBehaviour
     public bool inProgress;
     public bool isDestroyed;
 
+    [SerializeField] bool isRequired = false;
+
     private static ChaosHud hud;
     private void Start()
     {
@@ -37,6 +39,11 @@ public class Destructible : MonoBehaviour
     }
     public void Activate()
     {
+        if(isRequired)
+        {
+            LevelController.CompleteReq();
+        }
+
         triggerObject.SetActive(false);
         visual.SetActive(false);
         GameObject debrisObject = Instantiate(fallingDebrisPrefab, transform.position, transform.rotation);

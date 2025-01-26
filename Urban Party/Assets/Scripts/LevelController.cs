@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class LevelController
 {
     public static int level = 0;
-    public static int completedReq = 0;
+    private static int completedReq = 0;
 
-    public void CompleteReq()
+    public static void CompleteReq()
     {
         completedReq++;
         if(level == 0 && completedReq == 1)
