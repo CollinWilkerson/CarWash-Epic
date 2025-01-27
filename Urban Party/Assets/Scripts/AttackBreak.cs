@@ -17,10 +17,10 @@ public class AttackBreak : MonoBehaviour
             if (health < 1)
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = damagedSprite;
-                if (required)
+                /*if (required)
                 {
                     LevelController.CompleteReq();
-                }
+                }*/
             }
         }
     }
