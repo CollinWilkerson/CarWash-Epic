@@ -75,7 +75,7 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Returning to title...");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Title");
+        SceneManager.LoadScene("Title 1");
     }
 
     //public void Settings()
