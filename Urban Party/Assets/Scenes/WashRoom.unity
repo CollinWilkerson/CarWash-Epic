@@ -791,7 +791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagedSprite: {fileID: 21300000, guid: b42197b31ba0b424095ce03e0e1b6786, type: 3}
-  health: 5
+  health: 1
   required: 1
 --- !u!4 &203424309
 Transform:
@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagedSprite: {fileID: 21300000, guid: 888c3895854928543948c6fc86bf2a74, type: 3}
-  health: 2
+  health: 1
   required: 0
 --- !u!4 &579579413
 Transform:
@@ -1559,13 +1559,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Breakable_Vase
       objectReference: {fileID: 0}
+    - target: {fileID: 183620708229446644, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165893677688727414, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533688681594732967, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 11.089629
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533688681594732967, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6833
+      objectReference: {fileID: 0}
     - target: {fileID: 8533688681594732967, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -218.37
+      value: -228.95
       objectReference: {fileID: 0}
     - target: {fileID: 8533688681594732967, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.2
+      value: -3.62
       objectReference: {fileID: 0}
     - target: {fileID: 8533688681594732967, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1597,6 +1613,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8533688681594732967, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8837496163266071728, guid: 654c7fdc54fdcd643a3d29a235354a02, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
