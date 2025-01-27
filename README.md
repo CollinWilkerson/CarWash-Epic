@@ -5,7 +5,7 @@ For global game jam 2025 - Bubble
 Use WASD to move LMB to attack, and Lshift to sprint
 
 
-**PLAY AT: ** 
+**PLAY AT:** 
 
 
 Programmers:
@@ -17,6 +17,8 @@ Tristan Irish
 Sophia Katsanis
 
 Ian Walford
+
+Kayleigh Hasselmeier
 
 Sergio Andres Quiroga Velarde
 
