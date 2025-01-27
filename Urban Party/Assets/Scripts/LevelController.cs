@@ -21,7 +21,7 @@ public class LevelController
         {
             level++;
             completedReq = 0;
-            SceneManager.LoadScene("LaundryRoom");
+            SceneManager.LoadScene("WashRoom");
         }
     }
 }

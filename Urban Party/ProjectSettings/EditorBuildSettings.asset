@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Title 1.unity
     guid: 07194cc97de0d4746a7596bc283ea9fc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Shop.unity
     guid: a010ae9abd3c248459cc332ae91a277c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Thanksgiving.unity
     guid: a0a1e2fd875334643a9cd6399a88c169
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Battle.unity
     guid: 3f1ce90f92b03094ca9de9fc8e5ab476
   - enabled: 1
@@ -26,4 +26,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LivingRoom.unity
     guid: 29aa9d2b79f4a814e96a373264ff49ee
+  - enabled: 1
+    path: Assets/Scenes/WashRoom.unity
+    guid: 2aa373b39bffcd041bdf12f625090b41
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: fc722c1d1e2f8384e863b0e214adee4b
+  - enabled: 1
+    path: Assets/Scenes/LoseScreen.unity
+    guid: e6e82299f61a5784eb3a4110ad096611
   m_configObjects: {}
