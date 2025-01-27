@@ -4333,6 +4333,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -1204527335
       objectReference: {fileID: 0}
+    - target: {fileID: 2604144072115479397, guid: 70365843e44ee0540befa8cba9ce1d6e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2926818544757609454, guid: 70365843e44ee0540befa8cba9ce1d6e, type: 3}
       propertyPath: maxSpeed
       value: 6
